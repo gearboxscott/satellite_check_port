@@ -12,7 +12,9 @@ def check_port( satellite, service, port ):
   try:
      error = 0
      httpSock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+     httpScok.settimeout(20)
      httpSock.connect(( satellite, port ))
+     httpScok.settimeout(None)
      httpSock.close()
      print("\tSuccessful connection on port {0} ({1}) to {2}.".format(port,service,satellite))
   except socket.error, (value, message):
